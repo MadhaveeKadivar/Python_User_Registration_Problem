@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-22 21:13:20
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-22 22:25:41
+    @Last Modified time: 2022-05-22 22:47:22
     @Title : User Registration Problem
 '''
 import re
@@ -96,6 +96,21 @@ def password_rule_2_check(password):
         return True
     else:
         return False
+
+def password_rule_3_check(password):
+    """ 
+        Description: 
+            This function is matching User's paasword for rule 3(Atleast one digit) with regex pattern
+        Parameter:
+            It takes one password string as argument
+        Return:
+            returns True or False
+    """
+    pattern = "^(?=.*[A-Z])(?=.*[0-9])[0-9a-zA-Z@#$%^&*!+=]{8,}$"
+    if re.match(pattern,password):
+        return True
+    else:
+        return False
     
 if __name__=="__main__":
     # First Name
@@ -132,7 +147,7 @@ if __name__=="__main__":
 
     # Password rule 1
     password = input("\nEnter password : ")
-    is_password_valid = password_rule_2_check(password)
+    is_password_valid = password_rule_3_check(password)
     if is_password_valid:
         print(f"\n{password} : Valid")
     else :
