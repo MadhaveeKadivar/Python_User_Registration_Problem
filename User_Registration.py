@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-22 21:13:20
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-22 21:47:13
+    @Last Modified time: 2022-05-22 22:12:37
     @Title : User Registration Problem
 '''
 import re
@@ -55,14 +55,29 @@ def email_check(email):
 def mobile_number_check(mobile_no):
     """ 
         Description: 
-            This function is matching User's email with regex pattern
+            This function is matching User's mobile number with regex pattern
         Parameter:
-            It takes one email string as argument
+            It takes one mobile number string as argument
         Return:
             returns True or False
     """
     pattern = "^[9][1][ ][6-9][0-9]{9}$"
     if re.match(pattern,mobile_no):
+        return True
+    else:
+        return False
+
+def password_rule_1_check(password):
+    """ 
+        Description: 
+            This function is matching User's paasword for rule 1(Minimum 8 character) with regex pattern
+        Parameter:
+            It takes one password string as argument
+        Return:
+            returns True or False
+    """
+    pattern = "^[0-9a-zA-Z@#$%^&*!+=]{8,}"
+    if re.match(pattern,password):
         return True
     else:
         return False
@@ -92,10 +107,18 @@ if __name__=="__main__":
     else :
         print(f"\n{email} : Invalid")
 
-    # Mobile NUmber
+    # Mobile Number
     mobile_no = input("\nEnter Mobile Number : ")
     is_mobile_no_valid = mobile_number_check(mobile_no)
     if is_mobile_no_valid:
         print(f"\n{mobile_no} : Valid")
     else :
         print(f"\n{mobile_no} : Invalid")
+
+    # Password rule 1
+    password = input("\nEnter password : ")
+    is_password_valid = password_rule_1_check(password)
+    if is_password_valid:
+        print(f"\n{password} : Valid")
+    else :
+        print(f"\n{password} : Invalid")
