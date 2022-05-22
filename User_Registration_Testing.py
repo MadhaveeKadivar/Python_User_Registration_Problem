@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-22 21:11:20
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-22 21:11:11
+    @Last Modified time: 2022-05-22 21:21:45
     @Title : User Registration Testing 
 '''
 import unittest
@@ -23,6 +23,22 @@ class TestArithmeticOperation(unittest.TestCase):
         self.assertEqual(User_Registration.first_name("madhavee"),False)
         self.assertEqual(User_Registration.first_name("Ma"),False)
         self.assertEqual(User_Registration.first_name("ma"),False)
+        self.assertEqual(User_Registration.first_name("MADHAVEE"),False)
+        
+    def test_lastname(self):
+        """ 
+            Description: 
+                This function is testing user's last name 
+            Parameter:
+                self as argument
+            Return:
+                None
+        """
+        self.assertEqual(User_Registration.last_name("Kadivar"),True)
+        self.assertEqual(User_Registration.last_name("kadivar"),False)
+        self.assertEqual(User_Registration.last_name("Km"),False)
+        self.assertEqual(User_Registration.last_name("mk"),False)
+        self.assertEqual(User_Registration.last_name("KADIVAR"),False)
     
 if __name__ == "__main__":
     unittest.main()
