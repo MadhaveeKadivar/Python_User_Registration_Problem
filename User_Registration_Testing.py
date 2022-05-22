@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-22 21:11:20
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-22 22:48:43
+    @Last Modified time: 2022-05-22 22:55:24
     @Title : User Registration Testing 
 '''
 import unittest
@@ -105,7 +105,22 @@ class TestArithmeticOperation(unittest.TestCase):
         self.assertEqual(User_Registration.password_rule_3_check("Awdfergt8"),True)
         self.assertEqual(User_Registration.password_rule_3_check("A56235623"),True)
         self.assertEqual(User_Registration.password_rule_3_check("Adsf69"),False)
-    
+
+    def test_password_rule_4(self):
+        """ 
+            Description: 
+                This function is testing user's password for rule 4
+            Parameter:
+                self as argument
+            Return:
+                None
+        """
+        self.assertEqual(User_Registration.password_rule_4_check("dfgDnjvbn"),False)
+        self.assertEqual(User_Registration.password_rule_4_check("A5sdf@df"),True)
+        self.assertEqual(User_Registration.password_rule_4_check("F5G@f"),False)
+        self.assertEqual(User_Registration.password_rule_4_check("85ADcv*gj5"),True)
+        self.assertEqual(User_Registration.password_rule_4_check("*&&d*fgADDd845"),False)
+        self.assertEqual(User_Registration.password_rule_4_check("885@dfvvvb"),False)
         
 if __name__ == "__main__":
     unittest.main()
