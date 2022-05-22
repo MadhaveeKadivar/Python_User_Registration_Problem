@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-22 21:13:20
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-22 21:33:01
+    @Last Modified time: 2022-05-22 21:47:13
     @Title : User Registration Problem
 '''
 import re
@@ -51,6 +51,21 @@ def email_check(email):
         return True
     else:
         return False
+
+def mobile_number_check(mobile_no):
+    """ 
+        Description: 
+            This function is matching User's email with regex pattern
+        Parameter:
+            It takes one email string as argument
+        Return:
+            returns True or False
+    """
+    pattern = "^[9][1][ ][6-9][0-9]{9}$"
+    if re.match(pattern,mobile_no):
+        return True
+    else:
+        return False
     
 if __name__=="__main__":
     # First Name
@@ -69,10 +84,18 @@ if __name__=="__main__":
     else :
         print(f"\n{lname} : Invalid")
 
-    # =Email
-    email = input("\nEnter last name : ")
+    # Email
+    email = input("\nEnter Email : ")
     is_email_valid = email_check(email)
     if is_email_valid:
         print(f"\n{email} : Valid")
     else :
         print(f"\n{email} : Invalid")
+
+    # Mobile NUmber
+    mobile_no = input("\nEnter Mobile Number : ")
+    is_mobile_no_valid = mobile_number_check(mobile_no)
+    if is_mobile_no_valid:
+        print(f"\n{mobile_no} : Valid")
+    else :
+        print(f"\n{mobile_no} : Invalid")

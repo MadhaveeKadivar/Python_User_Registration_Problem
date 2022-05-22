@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-22 21:11:20
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-22 21:33:14
+    @Last Modified time: 2022-05-22 21:49:29
     @Title : User Registration Testing 
 '''
 import unittest
@@ -51,6 +51,21 @@ class TestArithmeticOperation(unittest.TestCase):
         """
         self.assertEqual(User_Registration.email_check("abc@gmail.com"),True)
         self.assertEqual(User_Registration.email_check("abc.com.in"),False)
+        
+    def test_mobile_number(self):
+        """ 
+            Description: 
+                This function is testing user's mobile number
+            Parameter:
+                self as argument
+            Return:
+                None
+        """
+        self.assertEqual(User_Registration.mobile_number_check("91 9615145122"),True)
+        self.assertEqual(User_Registration.mobile_number_check("919635245125"),False)
+        self.assertEqual(User_Registration.mobile_number_check("9856235648"),False)
+        self.assertEqual(User_Registration.mobile_number_check("91 1258521452"),False)
+        self.assertEqual(User_Registration.mobile_number_check("91 89561285"),False)
         
 if __name__ == "__main__":
     unittest.main()
