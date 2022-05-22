@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-22 21:11:20
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-22 21:21:45
+    @Last Modified time: 2022-05-22 21:33:14
     @Title : User Registration Testing 
 '''
 import unittest
@@ -39,6 +39,18 @@ class TestArithmeticOperation(unittest.TestCase):
         self.assertEqual(User_Registration.last_name("Km"),False)
         self.assertEqual(User_Registration.last_name("mk"),False)
         self.assertEqual(User_Registration.last_name("KADIVAR"),False)
-    
+        
+    def test_email(self):
+        """ 
+            Description: 
+                This function is testing user's email
+            Parameter:
+                self as argument
+            Return:
+                None
+        """
+        self.assertEqual(User_Registration.email_check("abc@gmail.com"),True)
+        self.assertEqual(User_Registration.email_check("abc.com.in"),False)
+        
 if __name__ == "__main__":
     unittest.main()

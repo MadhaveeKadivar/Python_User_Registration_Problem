@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-22 21:13:20
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-22 21:21:23
+    @Last Modified time: 2022-05-22 21:33:01
     @Title : User Registration Problem
 '''
 import re
@@ -22,7 +22,7 @@ def first_name(fname):
     else:
         return False
 
-def last_name(fname):
+def last_name(lname):
     """ 
         Description: 
             This function is matching User's Last name(Minimum 3 character having first character as capital) with regex pattern
@@ -32,7 +32,22 @@ def last_name(fname):
             returns True or False
     """
     pattern = "^[A-Z][a-z]{2,}$"
-    if re.match(pattern,fname):
+    if re.match(pattern,lname):
+        return True
+    else:
+        return False
+
+def email_check(email):
+    """ 
+        Description: 
+            This function is matching User's email with regex pattern
+        Parameter:
+            It takes one email string as argument
+        Return:
+            returns True or False
+    """
+    pattern =  "^[0-9a-zA-Z]+[./+_-]{0,1}[0-9a-zA-Z]+[@][a-zA-Z0-9-]+[.][a-zA-Z]{2,}([.][a-zA-Z]{2,}){0,1}$"
+    if re.match(pattern,email):
         return True
     else:
         return False
@@ -53,3 +68,11 @@ if __name__=="__main__":
         print(f"\n{lname} : Valid")
     else :
         print(f"\n{lname} : Invalid")
+
+    # =Email
+    email = input("\nEnter last name : ")
+    is_email_valid = email_check(email)
+    if is_email_valid:
+        print(f"\n{email} : Valid")
+    else :
+        print(f"\n{email} : Invalid")
