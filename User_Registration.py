@@ -6,7 +6,15 @@
     @Title : User Registration Problem
 '''
 import re
-
+import logging
+# Logging
+logging.basicConfig(filename = 'file.log',format = '%(asctime)s | %(levelname)s | %(lineno)d: %(message)s')
+logger = logging.getLogger("root_logger")
+logger.setLevel(logging.DEBUG)
+console_handler = logging.StreamHandler()
+log_format = '%(message)s'
+console_handler.setFormatter(logging.Formatter(log_format))
+logger.addHandler(console_handler)
 def first_name(fname):
     """ 
         Description: 
@@ -46,7 +54,7 @@ def email_check(email):
         Return:
             returns True or False
     """
-    pattern =  "^[0-9a-zA-Z]+[./+_-]{0,1}[0-9a-zA-Z]+[@][a-zA-Z0-9-]+[.][a-zA-Z]{2,}([.][a-zA-Z]{2,}){0,1}$"
+    pattern =  "^[0-9a-zA-Z]+[./+_-]{0,1}[0-9a-zA-Z]+[@][a-zA-Z0-9]+[.][a-zA-Z]{2,}([.][a-zA-Z]{2,}){0,1}$"
     if re.match(pattern,email):
         return True
     else:
@@ -121,7 +129,7 @@ def password_rule_4_check(password):
         Return:
             returns True or False
     """
-    pattern = "^(?=.{8,}$)(?=.*[0-9])(?=.*[A-Z])[A-Za-z0-9]{0,}?[@~!#$%^&*+=\/-]{1}[a-zA-Z0-9]{0,}$"
+    pattern = "^(?=.{8,}$)(?=.*[0-9])(?=.*[A-Z])[A-Za-z0-9]{0,}[@~!#$%^&*+=\/-]{1}[a-zA-Z0-9]{0,}$"
     if re.match(pattern,password):
         return True
     else:
@@ -132,38 +140,38 @@ if __name__=="__main__":
     fname = input("\nEnter first name : ")
     is_fname_valid = first_name(fname)
     if is_fname_valid:
-        print(f"\n{fname} : Valid")
+        logger.info(f"\n{fname} : Valid")
     else :
-        print(f"\n{fname} : Invalid")
+        logger.info(f"\n{fname} : Invalid")
 
     # Last Name
     lname = input("\nEnter last name : ")
     is_lname_valid = last_name(lname)
     if is_lname_valid:
-        print(f"\n{lname} : Valid")
+        logger.info(f"\n{lname} : Valid")
     else :
-        print(f"\n{lname} : Invalid")
+        logger.info(f"\n{lname} : Invalid")
 
     # Email
     email = input("\nEnter Email : ")
     is_email_valid = email_check(email)
     if is_email_valid:
-        print(f"\n{email} : Valid")
+        logger.info(f"\n{email} : Valid")
     else :
-        print(f"\n{email} : Invalid")
+        logger.info(f"\n{email} : Invalid")
 
     # Mobile Number
     mobile_no = input("\nEnter Mobile Number : ")
     is_mobile_no_valid = mobile_number_check(mobile_no)
     if is_mobile_no_valid:
-        print(f"\n{mobile_no} : Valid")
+        logger.info(f"\n{mobile_no} : Valid")
     else :
-        print(f"\n{mobile_no} : Invalid")
+        logger.info(f"\n{mobile_no} : Invalid")
 
     # Password rule 1
     password = input("\nEnter password : ")
     is_password_valid = password_rule_4_check(password)
     if is_password_valid:
-        print(f"\n{password} : Valid")
+        logger.info(f"\n{password} : Valid")
     else :
-        print(f"\n{password} : Invalid")
+        logger.info(f"\n{password} : Invalid")
